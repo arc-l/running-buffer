@@ -1,4 +1,4 @@
-from util import limit_memory, generate_instance, construct_DG
+from util import generate_instance, construct_DG
 from Unlabeled_DFDP import DFDP_Search
 from show_arrangement import show_arrangement
 
@@ -39,7 +39,4 @@ def DFDP_Experiment(numObjs, Density, Height=1000, Width=1000):
 
 
 if __name__ == '__main__':
-    # Set a limit of the memory usage
-    limit_memory(1.3 * 2**(34))  #2**34=16G
-
     DFDP_Experiment(20, 0.4)

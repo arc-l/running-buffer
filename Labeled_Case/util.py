@@ -2,13 +2,6 @@ import numpy as np
 import os
 import random
 import math
-import resource
-
-MemLimit = 1.3 * 2**(34)
-  
-def limit_memory(maxsize): 
-    soft, hard = resource.getrlimit(resource.RLIMIT_AS) 
-    resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
 
 
 def generate_instance(numObjs, Density):
