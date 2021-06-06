@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import matplotlib.cm as cmx
 
-import Polygon as pn
-
 
 def getColorMap(obj_list):
     # set colormap
@@ -33,12 +31,10 @@ def show_arrangement(numObjs, Density, start_arr, goal_arr):
     fig = plt.figure(num=None, figsize=(int(5 * WIDTH / HEIGHT), 5), dpi=120, facecolor='w', edgecolor='b')
     ax = fig.subplots()
 
-    wall = pn.Polygon([(0, 0), (WIDTH, 0), (WIDTH, HEIGHT), (0, HEIGHT)])
-    for walls in wall:
-        # walls = pu.pointList(cont)
-        wallx = [p[0] for p in walls + [walls[0]]]
-        wally = [p[1] for p in walls + [walls[0]]]
-        plt.plot(wallx, wally, 'blue')
+    walls = [(0, 0), (WIDTH, 0), (WIDTH, HEIGHT), (0, HEIGHT)]
+    wallx = [p[0] for p in walls + [walls[0]]]
+    wally = [p[1] for p in walls + [walls[0]]]
+    plt.plot(wallx, wally, 'blue')
 
     for key, point in goal_arr.items():
         circle = plt.Circle(point,Radius, linestyle='--', edgecolor=color_pool[key], facecolor="white", lw=2,zorder=2)
