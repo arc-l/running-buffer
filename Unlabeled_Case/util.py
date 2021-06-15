@@ -82,8 +82,6 @@ def construct_DG( start_arr, goal_arr, radius):
     for goal_obj, goal_center in goal_arr.items():
         DG[goal_obj] = set()
         for start_obj, start_center in start_arr.items():
-            if start_obj == goal_obj:
-                continue
             if (math.sqrt((start_center[0]-goal_center[0])**2+
             (start_center[1]-goal_center[1])**2) <= 2*radius):
                 DG[goal_obj].add(start_obj)
