@@ -15,7 +15,7 @@ This repository will host the source code implementing efficient algorithms for 
 1. Labeled Instance: `python3 ./Labeled_Case/Labeled_Experiment.py`
 2. Unlabeled Instance: `python3 ./Unlabeled_Case/Unlabeled_Experiment.py`
 
-## On Minimizing the Number of Running Buffers for Tabletop Rearrangement
+## Introduction
 
 In nearly all aspects of our everyday lives, be it work related, at home, or for 
 play, objects are to be grasped and rearranged, e.g., tidying up a messy desk, 
