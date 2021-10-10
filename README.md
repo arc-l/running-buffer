@@ -12,8 +12,8 @@ This repository will host the source code implementing efficient algorithms for 
 3. Run `pip install -e .` to install the RunningBuffer package and dependencies. 
 
 ## Run
-1. Labeled Instance: `python3 ./Labeled_Case/Labeled_Experiment.py`
-2. Unlabeled Instance: `python3 ./Unlabeled_Case/Unlabeled_Experiment.py`
+1. Labeled Instance: `python ./Labeled_Case/Labeled_Experiment.py`
+2. Unlabeled Instance: `python ./Unlabeled_Case/Unlabeled_Experiment.py`
 
 ## Introduction
 
