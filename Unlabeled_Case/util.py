@@ -2,6 +2,7 @@ import numpy as np
 import os
 import random
 import math
+import json
 
 def generate_instance(numObjs, Density):
     '''
@@ -15,7 +16,7 @@ def generate_instance(numObjs, Density):
     '''
     instance_num = 20
     arrangement_choices = np.random.choice(range(instance_num),size=2, replace=False)
-    my_path = os.path.abspath(os.path.dirname(__file__)) + "/arrangements"
+    my_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/arrangements"
     
     # randomly assign obj IDs to discs
     start_list = list(range(numObjs))
@@ -28,42 +29,28 @@ def generate_instance(numObjs, Density):
     goal_arr = {}
 
     ### start arr ###
-    f = open( 
+    with open( 
         os.path.join(
             my_path, 
             "D="+str(round(Density,1)), 
             "n="+str(numObjs),
-            str(arrangement_choices[0])+"_"+str(numObjs)+"_"+str(round(Density,1))+".txt"
-            ), 'rb')
-    object_index = 0
-    for line in f.readlines():
-        line = line.decode('utf-8')
-        if line == "objects\n":
-            continue
-        else:
-            pose = line.split()
-            start_arr[start_list[object_index]] = (float(pose[0]), float(pose[1]))
-            object_index += 1
-    f.close()
+            str(arrangement_choices[0])+"_"+str(numObjs)+"_"+str(round(Density,1))+".json"
+            )) as f:
+        data_dict = json.load(f)
+        point_list = data_dict['point_list']
+        start_arr = {start_list[i]:tuple(p) for i, p in enumerate(point_list)}
 
     ### goal arr ###
-    f = open( 
+    with open( 
         os.path.join(
             my_path, 
             "D="+str(round(Density,1)), 
             "n="+str(numObjs),
-            str(arrangement_choices[1])+"_"+str(numObjs)+"_"+str(round(Density,1))+".txt"
-            ), 'rb')
-    object_index = 0
-    for line in f.readlines():
-        line = line.decode('utf-8')
-        if line == "objects\n":
-            continue
-        else:
-            pose = line.split()
-            goal_arr[goal_list[object_index]] = (float(pose[0]), float(pose[1]))
-            object_index += 1
-    f.close()
+            str(arrangement_choices[1])+"_"+str(numObjs)+"_"+str(round(Density,1))+".json"
+            )) as f:
+        data_dict = json.load(f)
+        point_list = data_dict['point_list']
+        goal_arr = {goal_list[i]:tuple(p) for i, p in enumerate(point_list)}
     
     return start_arr, goal_arr
 
